@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width:device-width, initial-scale:1.0">
+    <meta name="keywords" content="html,css,js,grid">
+    <meta name="description" content="calculator">
+    <meta name="author" content="Sanaz Mahmoudi">
+    <link rel="stylesheet" href="cal.css">
+    <link rel="icon" href="logo/cal.svg">
+    <script defer="defer" type="text/javascript" src="cal.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <nav>
+      <a href="#" title="simple calculator"><img src="logo/cal.svg" alt="logo" width="80" height="80"></a>
+    </nav>
+    <div class="container">
+      <div class="headCenter">
+        <p id="resCenter"></p>
+      </div>
+      <hr>
+      <div class="head">
+        <p id="res"></p>
+      </div>
+      <button class="btnGrid gray" onclick="clearing()">C</button>
+      <button class="btnGrid gray" onclick="setSign()">+/-</button>
+      <button class="btnGrid gray" onclick="setOp(this)">%</button>
+      <button class="btnGrid aqua" onclick="setOp(this)">÷</button>
+      <button class="btnGrid" onclick="setNum(this)">7</button>
+      <button class="btnGrid" onclick="setNum(this)">8</button>
+      <button class="btnGrid" onclick="setNum(this)">9</button>
+      <button class="btnGrid aqua" onclick="setOp(this)">x</button>
+      <button class="btnGrid" onclick="setNum(this)">4</button>
+      <button class="btnGrid" onclick="setNum(this)">5</button>
+      <button class="btnGrid" onclick="setNum(this)">6</button>
+      <button class="btnGrid aqua" onclick="setOp(this)">-</button>
+      <button class="btnGrid" onclick="setNum(this)">3</button>
+      <button class="btnGrid" onclick="setNum(this)">2</button>
+      <button class="btnGrid" onclick="setNum(this)">1</button>
+      <button class="btnGrid aqua" onclick="setOp(this)">+</button>
+      <button class="btnGrid zero" onclick="setNum(this)">0</button>
+      <button class="btnGrid" onclick="setNum(this)">.</button>
+      <button class="btnGrid aqua" onclick="assign();">=</button>
+    </div>
+    <footer>
+      designed by <a href="https://tweetdeck.twitter.com/">𝒮𝒶𝓃𝒶𝒵</a>
+    </footer>
+  </body>
+
+</html>
