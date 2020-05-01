@@ -12,6 +12,7 @@ setNum = (btn) => {
 }
 
 setSign = () => {
+  currNum = displayRes;
   if (currNum) { currNum = -1 * currNum; }
   document.getElementById("res").innerHTML = currNum;
   document.getElementById("resCenter").innerHTML = currNum;
@@ -28,10 +29,11 @@ setOp = (btn) => {
 assign = () => {
   number.push(currNum);
   number = number.map(changeNum);
+  console.log(number);
 
   for (var i = 0; i < (number.length - 1); i++) {
-    number[i + 1] = compute(number[i], number[i + 1], operator[i]);
-    displayRes = number[i + 1];
+    number[i+1] = compute(number[i], number[i + 1], operator[i]);
+    displayRes = number[i+1];
   }
 
   number.splice(0, 2);
