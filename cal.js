@@ -29,13 +29,11 @@ setOp = (btn) => {
 assign = () => {
   number.push(currNum);
   number = number.map(changeNum);
-  console.log(number);
 
   for (var i = 0; i < (number.length - 1); i++) {
     number[i+1] = compute(number[i], number[i + 1], operator[i]);
     displayRes = number[i+1];
   }
-
   number.splice(0, 2);
   operator.pop();
 
