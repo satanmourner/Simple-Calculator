@@ -1,7 +1,7 @@
 var currNum = "",
   oldNum = "",
   number = [],
-  operator = "",
+  operator = [],
   displayRes = "";
 
 setNum = (btn) => {
@@ -19,15 +19,31 @@ setSign = () => {
 
 setOp = (btn) => {
   var text = btn.textContent;
-  oldNum = currNum;
+  number.push(currNum);
   currNum = "";
-  operator = text;
-  document.getElementById("res").innerHTML = operator;
+  operator.push(text);
+  document.getElementById("res").innerHTML = operator[operator.length - 1];
 }
 
 assign = () => {
-  currNum = parseFloat(currNum);
-  oldNum = parseFloat(oldNum);
+  number.push(currNum);
+  number = number.map(changeNum);
+
+  for (var i = 0; i < (number.length - 1); i++) {
+    number[i + 1] = compute(number[i], number[i + 1], operator[i]);
+    displayRes = number[i + 1];
+  }
+
+  number.splice(0, 2);
+  operator.pop();
+
+  document.getElementById("res").innerHTML = displayRes;
+  document.getElementById("resCenter").innerHTML = displayRes;
+}
+
+changeNum = (value) => parseFloat(value);
+
+compute = (oldNum, currNum, operator) => {
 
   console.log(currNum, oldNum, operator);
   switch (operator) {
@@ -49,15 +65,15 @@ assign = () => {
     default:
       displayRes = "";
   }
-  currNum = displayRes;
   if (!currNum || !oldNum) { displayRes = ""; }
-  document.getElementById("res").innerHTML = displayRes;
-  document.getElementById("resCenter").innerHTML = displayRes;
+  return displayRes;
 }
 
 clearing = () => {
   oldNum = "";
   currNum = "";
+  number = [];
+  operator = [];
   displayRes = "";
   document.getElementById("res").innerHTML = displayRes;
   document.getElementById("resCenter").innerHTML = displayRes;
@@ -65,11 +81,10 @@ clearing = () => {
 
 $(".btnGrid").click(() => {
   new Audio("audio/button-3.mp3").play();
-})
+});
 
 $(".btnGrid").click(() => {
   $target = $('#resCenter');
   $target.removeClass('anime');
   setTimeout("$target.addClass('anime');", 100);
 });
-
