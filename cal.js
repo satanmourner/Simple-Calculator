@@ -37,6 +37,7 @@ assign = () => {
   number.splice(0, 2);
   operator.pop();
 
+  currNum = displayRes;
   document.getElementById("res").innerHTML = displayRes;
   document.getElementById("resCenter").innerHTML = displayRes;
 }
