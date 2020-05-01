@@ -1,8 +1,8 @@
-var currNum = "";
- oldNum = "",
- number = [],
- operator = "",
- displayRes = "";
+var currNum = "",
+  oldNum = "",
+  number = [],
+  operator = "",
+  displayRes = "";
 
 setNum = (btn) => {
   var text = btn.textContent;
