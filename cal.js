@@ -65,7 +65,6 @@ compute = (oldNum, currNum, operator) => {
     default:
       displayRes = "";
   }
-  if (!currNum || !oldNum) { displayRes = ""; }
   return displayRes;
 }
 
