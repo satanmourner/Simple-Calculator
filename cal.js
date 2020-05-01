@@ -19,28 +19,16 @@ setSign = () => {
 
 setOp = (btn) => {
   var text = btn.textContent;
-  number.push(currNum);
+  oldNum = currNum;
   currNum = "";
   operator = text;
   document.getElementById("res").innerHTML = operator;
 }
 
 assign = () => {
-  number.push(currNum);
-  number = number.map(changeNum);
+  currNum = parseFloat(currNum);
+  oldNum = parseFloat(oldNum);
 
-  for (var i = 0; i < (number.length - 1); i++) {
-    currNum = compute(number[i], number[i + 1], operator[i]);
-    displayRes = currNum;
-  }
-  number.splice(0, 2);
-  document.getElementById("res").innerHTML = displayRes;
-  document.getElementById("resCenter").innerHTML = displayRes;
-}
-
-changeNum = (value) => parseFloat(value);
-
-compute = (oldNum, currNum, operator) => {
   console.log(currNum, oldNum, operator);
   switch (operator) {
     case "+":
@@ -61,15 +49,18 @@ compute = (oldNum, currNum, operator) => {
     default:
       displayRes = "";
   }
+  currNum = displayRes;
   if (!currNum || !oldNum) { displayRes = ""; }
-  return displayRes;
+  document.getElementById("res").innerHTML = displayRes;
+  document.getElementById("resCenter").innerHTML = displayRes;
 }
 
 clearing = () => {
   oldNum = "";
   currNum = "";
-  document.getElementById("res").innerHTML = "";
-  document.getElementById("resCenter").innerHTML = "";
+  displayRes = "";
+  document.getElementById("res").innerHTML = displayRes;
+  document.getElementById("resCenter").innerHTML = displayRes;
 }
 
 $(".btnGrid").click(() => {
