@@ -39,7 +39,7 @@ assign = () => {
 
   if (operator.length < 1) { displayRes = currNum; }
 
-  for (var i = 0; i < number.length - 1; i++) {
+  for (let i = 0; i < number.length - 1; i++) {
     number[i + 1] = compute(number[i], number[i + 1], operator[i]);
   }
 
