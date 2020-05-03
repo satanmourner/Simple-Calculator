@@ -7,8 +7,6 @@ var currNum = "",
 setNum = (btn) => {
   var text = btn.textContent;
   currNum += text;
-  currNum = parseFloat(currNum);
-  // number.push(currNum);
   console.log(currNum);
   document.getElementById("res").innerHTML = currNum;
   document.getElementById("resCenter").innerHTML = currNum;
@@ -27,6 +25,9 @@ setSign = () => {
 
 setOp = (btn) => {
   var text = btn.textContent;
+  if (!currNum) {
+    currNum = 0;
+  }
   number.push(currNum);
   currNum = "";
   console.log(number);
@@ -36,18 +37,21 @@ setOp = (btn) => {
 }
 
 assign = () => {
+  if (!currNum) {
+    currNum = 0;
+  }
   number.push(currNum);
-  // number = number.map(changeNum);
+  number = number.map(changeNum);
   console.log(number);
 
+
   for (var i = 0; i < number.length - 1; i++) {
-    number[i+1] = compute(number[i], number[i+1], operator[i]);
+    number[i + 1] = compute(number[i], number[i + 1], operator[i]);
   }
   currNum = displayRes;
   console.log(currNum);
   console.log(displayRes);
-  console.log(number.indexOf(displayRes));
-  number = number.slice(number.indexOf(displayRes) +1);
+  number = [];
   console.log(number);
   operator = [];
   console.log(operator);
@@ -55,7 +59,7 @@ assign = () => {
   document.getElementById("resCenter").innerHTML = displayRes;
 }
 
-// changeNum = (value) => parseFloat(value);
+changeNum = (value) => parseFloat(value);
 
 compute = (oldNum, currNum, operator) => {
 
@@ -79,7 +83,9 @@ compute = (oldNum, currNum, operator) => {
     default:
       displayRes = "";
   }
-  // console.log(displayRes);
+
+  if (!oldNum && !currNum) { displayRes = ""; }
+
   return displayRes;
 }
 
