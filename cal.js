@@ -3,13 +3,11 @@ var currNum = "",
   operator = [],
   displayRes = "",
   temp = "";
-  oldNum = 0;
+oldNum = 0;
 
 setNum = (btn) => {
   var text = btn.textContent;
   currNum += text;
-  console.log(currNum);
-  console.log(number);
   document.getElementById("res").innerHTML = currNum;
   document.getElementById("resCenter").innerHTML = currNum;
 }
@@ -19,49 +17,37 @@ setSign = () => {
     number[number.indexOf(currNum)] = -1 * currNum;
     currNum = number[number.indexOf(-1 * currNum)];
   }
-  console.log(currNum);
-  console.log(currNum, number);
   document.getElementById("res").innerHTML = currNum;
   document.getElementById("resCenter").innerHTML = currNum;
 }
 
 setOp = (btn) => {
   var text = btn.textContent;
-  if (!currNum) {
-    currNum = 0;
-  }
+  if (!currNum) { currNum = 0; }
   number.push(currNum);
   currNum = "";
-  console.log(number);
   operator.push(text);
-  console.log(operator);
   document.getElementById("res").innerHTML = operator[operator.length - 1];
 }
 
 setFloat = () => {
   currNum = currNum + ".";
-  console.log(currNum);
 }
 
 assign = () => {
-  if (!currNum) {
-    currNum = 0;
-  }
+  if (!currNum) { currNum = 0; }
   number.push(currNum);
   number = number.map(changeNum);
-  console.log(number);
+
+  if (operator.length < 1) { displayRes = currNum; }
 
   for (var i = 0; i < number.length - 1; i++) {
     number[i + 1] = compute(number[i], number[i + 1], operator[i]);
   }
 
   currNum = displayRes;
-  console.log(currNum);
-  console.log(displayRes);
-  number = [];
-  console.log(number);
+  number = []; //NOT HAVE MEMORY
   operator = [];
-  console.log(operator);
   document.getElementById("res").innerHTML = displayRes;
   document.getElementById("resCenter").innerHTML = displayRes;
 }
