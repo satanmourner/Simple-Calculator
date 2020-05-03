@@ -2,8 +2,8 @@ var currNum = "",
   number = [],
   operator = [],
   displayRes = "",
-  temp = "";
-oldNum = 0;
+  temp = "",
+  oldNum = 0;
 
 setNum = (btn) => {
   var text = btn.textContent;
