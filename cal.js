@@ -2,12 +2,14 @@ var currNum = "",
   number = [],
   operator = [],
   displayRes = "",
+  temp = "";
   oldNum = 0;
 
 setNum = (btn) => {
   var text = btn.textContent;
   currNum += text;
   console.log(currNum);
+  console.log(number);
   document.getElementById("res").innerHTML = currNum;
   document.getElementById("resCenter").innerHTML = currNum;
 }
@@ -36,6 +38,11 @@ setOp = (btn) => {
   document.getElementById("res").innerHTML = operator[operator.length - 1];
 }
 
+setFloat = () => {
+  currNum = currNum + ".";
+  console.log(currNum);
+}
+
 assign = () => {
   if (!currNum) {
     currNum = 0;
@@ -44,10 +51,10 @@ assign = () => {
   number = number.map(changeNum);
   console.log(number);
 
-
   for (var i = 0; i < number.length - 1; i++) {
     number[i + 1] = compute(number[i], number[i + 1], operator[i]);
   }
+
   currNum = displayRes;
   console.log(currNum);
   console.log(displayRes);
