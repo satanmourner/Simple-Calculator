@@ -6,7 +6,8 @@ var currNum = "",
 setNum = (btn) => {
   var text = btn.textContent;
   currNum += text;
-  document.getElementById("res").innerHTML = currNum;
+  displayRes += text;
+  document.getElementById("res").innerHTML = displayRes;
   document.getElementById("resCenter").innerHTML = currNum;
 }
 
@@ -15,7 +16,8 @@ setSign = () => {
     number[number.indexOf(currNum)] = -1 * currNum;
     currNum = number[number.indexOf(-1 * currNum)];
   }
-  document.getElementById("res").innerHTML = currNum;
+  displayRes = currNum;
+  document.getElementById("res").innerHTML = displayRes;
   document.getElementById("resCenter").innerHTML = currNum;
 }
 
@@ -25,11 +27,13 @@ setOp = (btn) => {
   number.push(currNum);
   currNum = "";
   operator.push(text);
-  document.getElementById("res").innerHTML = operator[operator.length - 1];
+  displayRes += operator[operator.length - 1];
+  document.getElementById("res").innerHTML = displayRes;
 }
 
 setFloat = () => {
-  currNum = currNum + ".";
+  currNum += ".";
+  displayRes += ".";
 }
 
 assign = () => {
